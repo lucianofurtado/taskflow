@@ -141,3 +141,26 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Banco SQLite
+database/database.db
+
+# Kubernetes
+.kube/
+
+# Chaves SSH
+*.pem
+*.key
+
+# Arquivos locais
+*.bak
+*.tmp
+
+# VSCode
+.vscode/
+
+# Mac/Linux
+.DS_Store
+
+# Windows
+Thumbs.db
