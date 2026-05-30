@@ -1,12 +1,12 @@
-FROM node:22-alpine
+FROM --platform=$TARGETPLATFORM node:22-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install --omit=dev
+RUN npm ci --omit=dev
 
-COPY . .
+COPY src ./src
 
 RUN mkdir -p database
 
