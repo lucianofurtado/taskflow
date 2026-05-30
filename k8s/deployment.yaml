@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskflow
+  namespace: taskflow
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: taskflow
+  template:
+    metadata:
+      labels:
+        app: taskflow
+    spec:
+      containers:
+      - name: taskflow
+        image: ghcr.io/lucianofurtado/taskflow:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DB_PATH
+          value: "/app/database/database.db"
+        volumeMounts:
+        - name: sqlite-data
+          mountPath: /app/database
+      volumes:
+      - name: sqlite-data
+        persistentVolumeClaim:
+          claimName: taskflow-data

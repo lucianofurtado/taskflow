@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>TaskFlow</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <main class="container">
+
+    <section class="header">
+      <h1>TaskFlow</h1>
+      <p>Gerenciador simples de tarefas rodando em Kubernetes.</p>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <strong><%= total %></strong>
+        <span>Total</span>
+      </div>
+
+      <div class="card">
+        <strong><%= pendentes %></strong>
+        <span>Pendentes</span>
+      </div>
+
+      <div class="card">
+        <strong><%= concluidas %></strong>
+        <span>Concluídas</span>
+      </div>
+    </section>
+
+    <section class="form-box">
+      <form action="/tarefas" method="POST">
+        <input type="text" name="titulo" placeholder="Digite uma nova tarefa" required>
+        <input type="date" name="data_limite">
+        <button type="submit">Salvar</button>
+      </form>
+    </section>
+
+    <section class="task-list">
+
+      <% if (tarefas.length === 0) { %>
+        <div class="empty">
+          Nenhuma tarefa cadastrada ainda.
+        </div>
+      <% } %>
+
+      <% tarefas.forEach(tarefa => { %>
+        <div class="task <%= tarefa.concluida ? 'done' : '' %>">
+
+          <div class="task-info">
+            <h3><%= tarefa.titulo %></h3>
+            <p>Data limite: <%= tarefa.data_limite || 'Sem data' %></p>
+          </div>
+
+          <div class="actions">
+
+            <% if (!tarefa.concluida) { %>
+              <form action="/tarefas/<%= tarefa.id %>/concluir" method="POST">
+                <button class="success" title="Concluir">✓</button>
+              </form>
+            <% } else { %>
+              <form action="/tarefas/<%= tarefa.id %>/reabrir" method="POST">
+                <button class="warning" title="Reabrir">↺</button>
+              </form>
+            <% } %>
+
+            <form action="/tarefas/<%= tarefa.id %>/excluir" method="POST">
+              <button class="danger" title="Excluir">Excluir</button>
+            </form>
+
+          </div>
+
+        </div>
+      <% }) %>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
