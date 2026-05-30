@@ -16,6 +16,7 @@ body {
 }
 
 .header {
+  position: relative;
   text-align: center;
   margin-bottom: 30px;
 }
@@ -29,6 +30,16 @@ body {
 
 .header p {
   color: #8ea4c9;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 1px solid rgba(125, 211, 252, 0.28);
+  background: rgba(2, 6, 23, 0.72);
+  color: #67e8f9;
+  box-shadow: 0 0 22px rgba(34, 211, 238, 0.16);
 }
 
 .cards {
@@ -175,10 +186,63 @@ button:hover {
   color: #8ea4c9;
 }
 
+body.light-mode {
+  background:
+    radial-gradient(circle at top left, rgba(14, 165, 233, 0.16), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(79, 70, 229, 0.12), transparent 32%),
+    #eef5ff;
+  color: #172033;
+}
+
+body.light-mode .header h1 {
+  text-shadow: none;
+}
+
+body.light-mode .header p,
+body.light-mode .task-info p,
+body.light-mode .empty {
+  color: #5c6f91;
+}
+
+body.light-mode .card,
+body.light-mode .form-box,
+body.light-mode .task,
+body.light-mode .empty {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(37, 99, 235, 0.14);
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.12);
+}
+
+body.light-mode .card strong {
+  color: #2563eb;
+}
+
+body.light-mode input {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: #cbd5e1;
+  color: #172033;
+}
+
+body.light-mode input::placeholder {
+  color: #94a3b8;
+}
+
+body.light-mode .theme-toggle {
+  background: #172033;
+  border-color: #172033;
+  color: #e5f0ff;
+  box-shadow: 0 12px 28px rgba(23, 32, 51, 0.18);
+}
+
 @media (max-width: 720px) {
   .container {
     margin: 20px auto;
     padding: 16px;
+  }
+
+  .theme-toggle {
+    position: static;
+    margin-bottom: 18px;
   }
 
   .cards,

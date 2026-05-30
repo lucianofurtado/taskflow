@@ -10,6 +10,9 @@
   <main class="container">
 
     <section class="header">
+      <button class="theme-toggle" type="button" aria-label="Alternar modo claro">
+        Light mode
+      </button>
       <h1>TaskFlow</h1>
       <p>Gerenciador simples de tarefas rodando em Kubernetes.</p>
     </section>
@@ -80,5 +83,25 @@
 
   </main>
 
+  <script>
+    const themeButton = document.querySelector(".theme-toggle");
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "light") {
+      document.body.classList.add("light-mode");
+      themeButton.textContent = "Dark mode";
+      themeButton.setAttribute("aria-label", "Alternar modo escuro");
+    }
+
+    themeButton.addEventListener("click", () => {
+      const isLight = document.body.classList.toggle("light-mode");
+      localStorage.setItem("theme", isLight ? "light" : "dark");
+      themeButton.textContent = isLight ? "Dark mode" : "Light mode";
+      themeButton.setAttribute(
+        "aria-label",
+        isLight ? "Alternar modo escuro" : "Alternar modo claro"
+      );
+    });
+  </script>
 </body>
 </html>
