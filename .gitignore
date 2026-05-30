@@ -164,3 +164,9 @@ database/database.db
 
 # Windows
 Thumbs.db
+
+node_modules
+.git
+database
+README.md
+npm-debug.log
