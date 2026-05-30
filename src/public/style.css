@@ -32,14 +32,37 @@ body {
   color: #8ea4c9;
 }
 
-.theme-toggle {
+.header-actions {
   position: absolute;
   top: 0;
   right: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid rgba(125, 211, 252, 0.28);
+  border-radius: 50%;
   background: rgba(2, 6, 23, 0.72);
   color: #67e8f9;
+  font-size: 20px;
+  line-height: 1;
   box-shadow: 0 0 22px rgba(34, 211, 238, 0.16);
+}
+
+.pod-status {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.14), 0 0 18px rgba(34, 197, 94, 0.72);
 }
 
 .cards {
@@ -230,7 +253,7 @@ body.light-mode input::placeholder {
 body.light-mode .theme-toggle {
   background: #172033;
   border-color: #172033;
-  color: #e5f0ff;
+  color: #facc15;
   box-shadow: 0 12px 28px rgba(23, 32, 51, 0.18);
 }
 
@@ -240,8 +263,9 @@ body.light-mode .theme-toggle {
     padding: 16px;
   }
 
-  .theme-toggle {
+  .header-actions {
     position: static;
+    justify-content: center;
     margin-bottom: 18px;
   }
 

@@ -10,9 +10,12 @@
   <main class="container">
 
     <section class="header">
-      <button class="theme-toggle" type="button" aria-label="Alternar modo claro">
-        Light mode
-      </button>
+      <div class="header-actions">
+        <button class="theme-toggle" type="button" aria-label="Alternar modo claro" title="Modo claro">
+          <span aria-hidden="true">☀</span>
+        </button>
+        <span class="pod-status" title="Pod: <%= podName %>" aria-label="Pod: <%= podName %>"></span>
+      </div>
       <h1>TaskFlow</h1>
       <p>Gerenciador simples de tarefas rodando em Kubernetes.</p>
     </section>
@@ -89,18 +92,18 @@
 
     if (savedTheme === "light") {
       document.body.classList.add("light-mode");
-      themeButton.textContent = "Dark mode";
       themeButton.setAttribute("aria-label", "Alternar modo escuro");
+      themeButton.setAttribute("title", "Modo escuro");
     }
 
     themeButton.addEventListener("click", () => {
       const isLight = document.body.classList.toggle("light-mode");
       localStorage.setItem("theme", isLight ? "light" : "dark");
-      themeButton.textContent = isLight ? "Dark mode" : "Light mode";
       themeButton.setAttribute(
         "aria-label",
         isLight ? "Alternar modo escuro" : "Alternar modo claro"
       );
+      themeButton.setAttribute("title", isLight ? "Modo escuro" : "Modo claro");
     });
   </script>
 </body>

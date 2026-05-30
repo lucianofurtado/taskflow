@@ -43,7 +43,8 @@ app.get("/", (req, res) => {
         tarefas,
         total,
         concluidas,
-        pendentes
+        pendentes,
+        podName: process.env.HOSTNAME || "local"
       });
     }
   );
